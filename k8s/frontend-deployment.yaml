@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: developer-portal-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: developer-portal-frontend
+  template:
+    metadata:
+      labels:
+        app: developer-portal-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/your-account/developer-api-portal-frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+
